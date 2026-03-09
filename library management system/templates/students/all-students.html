@@ -103,11 +103,18 @@ color:white;
 <td>{{ student.stu_address }}</td>
 
 <td>
-<a href="{{ url_for('student.students_details',id=student.id)}}">
+
+<a href="{{ url_for('student.students_details', id=student.id) }}">
 <button class="btn read">Read</button>
 </a>
+
+<a href="{{ url_for('student.edit_student', id=student.id) }}">
 <button class="btn edit">Edit</button>
+</a>
+
+<a href="{{ url_for('student.delete_student', id=student.id) }}">
 <button class="btn delete">Delete</button>
+</a>
 
 </td>
 </tr>

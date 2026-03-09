@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+
+/* FLASH MESSAGE */
+
+.toast{
+position:fixed;
+top:20px;
+right:20px;
+background:#2ecc71;
+color:white;
+padding:15px 20px;
+border-radius:8px;
+font-weight:bold;
+box-shadow:0 5px 20px rgba(0,0,0,0.3);
+animation:slideIn 0.5s ease;
+z-index:999;
+}
+
+@keyframes slideIn{
+from{
+right:-300px;
+}
+to{
+right:20px;
+}
+}
+
+</style>
+
+<div class="container mt-5">
+
+<div class="card shadow-lg p-4">
+
+<h3 class="text-center mb-4">📚 All Authors</h3>
+
+
+<!-- FLASH MESSAGE -->
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+
+{% for category, message in messages %}
+
+<div class="toast">
+✔ {{ message }}
+</div>
+
+<script>
+setTimeout(function(){
+document.querySelector('.toast').style.display="none";
+},3000);
+</script>
+
+{% endfor %}
+
+{% endif %}
+{% endwith %}
+
+
+
+<table class="table table-bordered table-striped">
+
+<thead class="table-dark">
+
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Phone</th>
+<th>Country</th>
+<th>Biography</th>
+<th>Action</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for author in authors %}
+
+<tr>
+
+<td>{{ author.id }}</td>
+<td>{{ author.auth_name }}</td>
+<td>{{ author.auth_email }}</td>
+<td>{{ author.auth_phone }}</td>
+<td>{{ author.auth_country }}</td>
+<td>{{ author.auth_bio }}</td>
+
+<td>
+
+<a href="{{ url_for('author.author_details', id=author.id) }}">
+<button class="btn btn-success btn-sm">Read</button>
+</a>
+
+<a href="{{ url_for('author.edit_author', id=author.id) }}">
+<button class="btn btn-warning btn-sm">Edit</button>
+</a>
+
+<a href="{{ url_for('author.delete_author', id=author.id) }}">
+<button class="btn btn-danger btn-sm">Delete</button>
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+{% endblock %}

@@ -12,6 +12,9 @@ from sqlalchemy import text
 
 
 app = Flask(__name__)
+
+app.secret_key = "library_secret_key"
+
 app.config.from_object(Config)
 db.init_app(app)
 migrate=Migrate(app,db)

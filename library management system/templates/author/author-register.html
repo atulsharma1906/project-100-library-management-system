@@ -6,41 +6,102 @@
 
 <div class="row justify-content-center">
 
-<div class="col-md-5">
+<div class="col-md-6">
 
 <div class="card shadow-lg p-4">
 
 <h3 class="text-center mb-4 text-dark">✍ Author Registration</h3>
 
+<!-- Flash Messages -->
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+<div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+{{ message }}
+<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
 <form method="POST">
+
+<!-- Author Name -->
 
 <div class="mb-3">
 <label class="form-label text-dark">Author Name</label>
-<input type="text" class="form-control" name="name" placeholder="Enter author name">
+<input 
+type="text" 
+class="form-control" 
+name="auth_name" 
+placeholder="Enter author name"
+required
+>
 </div>
+
+<!-- Email -->
 
 <div class="mb-3">
 <label class="form-label text-dark">Email</label>
-<input type="email" class="form-control" name="email" placeholder="Enter email">
+<input 
+type="email" 
+class="form-control" 
+name="auth_email" 
+placeholder="Enter email"
+required
+>
 </div>
+
+<!-- Phone -->
 
 <div class="mb-3">
 <label class="form-label text-dark">Phone</label>
-<input type="text" class="form-control" name="phone" placeholder="Enter phone number">
+<input 
+type="text" 
+class="form-control" 
+name="auth_phone" 
+placeholder="Enter phone number"
+required
+>
 </div>
+
+<!-- Country -->
 
 <div class="mb-3">
 <label class="form-label text-dark">Country</label>
-<input type="text" class="form-control" name="country" placeholder="Enter country">
+<input 
+type="text" 
+class="form-control" 
+name="auth_country" 
+placeholder="Enter country"
+required
+>
 </div>
+
+<!-- Biography -->
 
 <div class="mb-3">
 <label class="form-label text-dark">Biography</label>
-<textarea class="form-control" name="bio" rows="3"></textarea>
+<textarea 
+class="form-control" 
+name="auth_bio" 
+rows="3"
+placeholder="Write short biography">
+</textarea>
 </div>
 
+<!-- Submit Button -->
+
 <div class="d-grid">
-<button class="btn btn-success">Register Author</button>
+<button type="submit" class="btn btn-success">
+Register Author
+</button>
+</div>
+<div class="d-grid">
+<a href="{{ url_for('author.all_authors') }}" class="btn btn-primary">
+📚 Show All Authors
+</a>
 </div>
 
 </form>

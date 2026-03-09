@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+<div class="row justify-content-center">
+
+<div class="col-md-6">
+
+<div class="card shadow-lg p-4">
+
+<h3 class="text-center mb-4 text-dark">✏ Edit Author</h3>
+
+<form method="POST">
+
+<div class="mb-3">
+<label class="form-label">Author Name</label>
+<input type="text" class="form-control" name="auth_name"
+value="{{ author.auth_name }}">
+</div>
+
+<div class="mb-3">
+<label class="form-label">Email</label>
+<input type="email" class="form-control" name="auth_email"
+value="{{ author.auth_email }}">
+</div>
+
+<div class="mb-3">
+<label class="form-label">Phone</label>
+<input type="text" class="form-control" name="auth_phone"
+value="{{ author.auth_phone }}">
+</div>
+
+<div class="mb-3">
+<label class="form-label">Country</label>
+<input type="text" class="form-control" name="auth_country"
+value="{{ author.auth_country }}">
+</div>
+
+<div class="mb-3">
+<label class="form-label">Biography</label>
+<textarea class="form-control" name="auth_bio" rows="3">
+{{ author.auth_bio }}
+</textarea>
+</div>
+
+<div class="d-grid">
+<button type="submit" class="btn btn-warning">
+Update Author
+</button>
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

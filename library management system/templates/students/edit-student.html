@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 style="text-align:center;">Edit Student</h2>
+
+<form method="POST" style="width:500px;margin:auto;">
+
+<input type="text" name="student_name" value="{{student.stu_name}}" placeholder="Name"><br><br>
+
+<input type="number" name="age" value="{{student.stu_age}}" placeholder="Age"><br><br>
+
+<input type="text" name="gender" value="{{student.stu_gender}}" placeholder="Gender"><br><br>
+
+<input type="text" name="course" value="{{student.stu_course}}" placeholder="Course"><br><br>
+
+<input type="email" name="email" value="{{student.stu_email}}" placeholder="Email"><br><br>
+
+<input type="text" name="phone" value="{{student.stu_phone}}" placeholder="Phone"><br><br>
+
+<input type="text" name="library_id" value="{{student.stu_library_id}}" placeholder="Library ID"><br><br>
+
+<input type="date" name="join_date" value="{{student.stu_join_date}}"><br><br>
+
+<input type="text" name="address" value="{{student.stu_address}}" placeholder="Address"><br><br>
+
+<button type="submit">Update Student</button>
+
+</form>
+
+{% endblock %}

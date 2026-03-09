@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+
+.details-wrapper{
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:80vh;
+}
+
+.author-card{
+width:700px;
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(12px);
+padding:40px;
+border-radius:15px;
+color:white;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+.author-card h2{
+text-align:center;
+margin-bottom:30px;
+}
+
+.info-row{
+display:flex;
+justify-content:space-between;
+padding:10px 0;
+border-bottom:1px solid rgba(255,255,255,0.2);
+}
+
+.label{
+font-weight:bold;
+}
+
+.bio{
+margin-top:15px;
+padding:15px;
+background:rgba(255,255,255,0.1);
+border-radius:8px;
+}
+
+.btn-group{
+margin-top:25px;
+display:flex;
+gap:15px;
+}
+
+.btn-custom{
+flex:1;
+padding:10px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+font-weight:500;
+}
+
+.back{
+background:#3498db;
+color:white;
+}
+
+.edit{
+background:#27ae60;
+color:white;
+}
+
+.delete{
+background:#e74c3c;
+color:white;
+}
+
+.btn-custom:hover{
+transform:scale(1.05);
+}
+
+</style>
+
+<div class="details-wrapper">
+
+<div class="author-card">
+
+<h2>✍ Author Details</h2>
+
+<div class="info-row">
+<span class="label">Name:</span>
+<span>{{ author.auth_name }}</span>
+</div>
+
+<div class="info-row">
+<span class="label">Email:</span>
+<span>{{ author.auth_email }}</span>
+</div>
+
+<div class="info-row">
+<span class="label">Phone:</span>
+<span>{{ author.auth_phone }}</span>
+</div>
+
+<div class="info-row">
+<span class="label">Country:</span>
+<span>{{ author.auth_country }}</span>
+</div>
+
+<div class="bio">
+<strong>Biography:</strong>
+<p>{{ author.auth_bio }}</p>
+</div>
+
+<div class="btn-group">
+
+<a href="{{ url_for('author.all_authors') }}" style="flex:1">
+<button class="btn-custom back">⬅ Back</button>
+</a>
+
+<a href="{{ url_for('author.edit_author', id=author.id) }}" style="flex:1">
+<button class="btn-custom edit">✏ Edit</button>
+</a>
+
+<a href="{{ url_for('author.delete_author', id=author.id) }}" style="flex:1">
+<button class="btn-custom delete">🗑 Delete</button>
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}
