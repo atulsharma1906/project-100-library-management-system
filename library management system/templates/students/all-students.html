@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+
+.page-wrapper{
+padding:40px;
+}
+
+.student-card{
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(10px);
+padding:30px;
+border-radius:15px;
+color:white;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.student-card h2{
+text-align:center;
+margin-bottom:25px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th, td{
+padding:12px;
+text-align:center;
+border-bottom:1px solid rgba(255,255,255,0.3);
+}
+
+th{
+background:rgba(0,0,0,0.3);
+}
+
+tr:hover{
+background:rgba(255,255,255,0.1);
+}
+
+.btn{
+padding:6px 12px;
+border:none;
+border-radius:4px;
+cursor:pointer;
+}
+
+.read{
+background:#28a745;
+color:white;
+
+}
+
+.edit{
+background:#28a745;
+color:white;
+}
+
+.delete{
+background:#dc3545;
+color:white;
+}
+
+</style>
+
+<div class="page-wrapper">
+
+<div class="student-card">
+
+<h2>📚 All Students</h2>
+
+<table>
+
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Age</th>
+<th>Gender</th>
+<th>Course</th>
+<th>Email</th>
+<th>Phone</th>
+<th>Library ID</th>
+<th>Join Date</th>
+<th>Address</th>
+<th>Action</th>
+</tr>
+
+{% for student in students %}
+
+<tr>
+<td>{{ student.id }}</td>
+<td>{{ student.stu_name }}</td>
+<td>{{ student.stu_age }}</td>
+<td>{{ student.stu_gender }}</td>
+<td>{{ student.stu_course }}</td>
+<td>{{ student.stu_email }}</td>
+<td>{{ student.stu_phone }}</td>
+<td>{{ student.stu_library_id }}</td>
+<td>{{ student.stu_join_date }}</td>
+<td>{{ student.stu_address }}</td>
+
+<td>
+<a href="{{ url_for('student.students_details',id=student.id)}}">
+<button class="btn read">Read</button>
+</a>
+<button class="btn edit">Edit</button>
+<button class="btn delete">Delete</button>
+
+</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+{% endblock %}

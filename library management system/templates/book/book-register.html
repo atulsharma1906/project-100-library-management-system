@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+<div class="row justify-content-center">
+
+<div class="col-md-5">
+
+<div class="card shadow-lg p-4">
+
+<h3 class="text-center mb-4 text-dark">📚 Book Registration</h3>
+
+<form method="POST">
+
+<div class="mb-3">
+<label class="form-label text-dark">Book Title</label>
+<input type="text" class="form-control" name="title" placeholder="Enter book title">
+</div>
+
+<div class="mb-3">
+<label class="form-label text-dark">Author Name</label>
+<input type="text" class="form-control" name="author" placeholder="Enter author name">
+</div>
+
+<div class="mb-3">
+<label class="form-label text-dark">ISBN</label>
+<input type="text" class="form-control" name="isbn" placeholder="Enter ISBN number">
+</div>
+
+<div class="mb-3">
+<label class="form-label text-dark">Category</label>
+<input type="text" class="form-control" name="category" placeholder="Enter book category">
+</div>
+
+<div class="mb-3">
+<label class="form-label text-dark">Publication Year</label>
+<input type="number" class="form-control" name="year" placeholder="Enter year">
+</div>
+
+<div class="mb-3">
+<label class="form-label text-dark">Description</label>
+<textarea class="form-control" name="description" rows="3"></textarea>
+</div>
+
+<div class="d-grid">
+<button class="btn btn-warning">Add Book</button>
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

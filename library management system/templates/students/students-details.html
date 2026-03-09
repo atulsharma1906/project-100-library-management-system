@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+
+.details-card{
+width:500px;
+margin:50px auto;
+background:rgba(255,255,255,0.15);
+padding:30px;
+border-radius:10px;
+backdrop-filter:blur(10px);
+}
+
+.details-card h2{
+text-align:center;
+margin-bottom:20px;
+}
+
+.details p{
+font-size:18px;
+margin:8px 0;
+}
+
+.back-btn{
+margin-top:20px;
+display:inline-block;
+padding:10px 20px;
+background:#3498db;
+color:white;
+text-decoration:none;
+border-radius:6px;
+}
+
+</style>
+
+<div class="details-card">
+
+<h2>Student Details</h2>
+
+<div class="details">
+
+<p><b>ID:</b> {{ student.id }}</p>
+<p><b>Name:</b> {{ student.stu_name }}</p>
+<p><b>Age:</b> {{ student.stu_age }}</p>
+<p><b>Email:</b> {{ student.stu_email }}</p>
+<p><b>Phone:</b> {{ student.stu_phone }}</p>
+<p><b>Course:</b> {{ student.stu_course }}</p>
+<p><b>Gender:</b> {{ student.stu_gender }}</p>
+<p><b>Library ID:</b> {{ student.stu_library_id }}</p>
+<p><b>Join Date:</b> {{ student.stu_join_date }}</p>
+<p><b>Address:</b> {{ student.stu_address }}</p>
+
+</div>
+
+<a href="/student/students" class="back-btn">⬅ Back</a>
+
+</div>
+
+{% endblock %}

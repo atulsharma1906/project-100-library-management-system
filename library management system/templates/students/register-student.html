@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+
+.page-wrapper{
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:85vh;
+}
+
+/* Glass Card */
+
+.form-card{
+width:700px;
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(12px);
+padding:40px;
+border-radius:16px;
+box-shadow:0 10px 35px rgba(0,0,0,0.25);
+color:white;
+}
+
+.form-card h2{
+text-align:center;
+margin-bottom:30px;
+font-weight:600;
+}
+
+/* Grid Layout */
+
+.form-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:18px;
+}
+
+/* Inputs */
+
+.form-control{
+padding:12px 14px;
+border-radius:8px;
+border:none;
+outline:none;
+background:rgba(255,255,255,0.9);
+font-size:14px;
+}
+
+/* Full width */
+
+.full{
+grid-column:span 2;
+}
+
+/* Button */
+
+.submit-btn{
+margin-top:25px;
+width:100%;
+padding:14px;
+border:none;
+border-radius:8px;
+background:#1abc9c;
+color:white;
+font-size:16px;
+font-weight:500;
+cursor:pointer;
+transition:0.3s;
+text-align:center;
+}
+
+.submit-btn:hover{
+background:#16a085;
+transform:scale(1.02);
+}
+
+.show-btn{
+margin-top:10px;
+background:#3498db;
+text-decoration:none;
+display:block;
+}
+
+</style>
+
+
+<div class="page-wrapper">
+
+<div class="form-card">
+
+<h2>🎓 Student Registration</h2>
+
+<form method="POST">
+
+<div class="form-grid">
+
+<input class="form-control" type="text" name="student_name" placeholder="Student Name" required>
+
+<input class="form-control" type="number" name="age" placeholder="Age">
+
+<select class="form-control" name="gender">
+<option value="">Select Gender</option>
+<option>Male</option>
+<option>Female</option>
+<option>Other</option>
+</select>
+
+<input class="form-control" type="text" name="course" placeholder="Course / Department">
+
+<input class="form-control" type="email" name="email" placeholder="Email">
+
+<input class="form-control" type="text" name="phone" placeholder="Phone Number">
+
+<input class="form-control" type="text" name="library_id" placeholder="Library ID">
+
+<input class="form-control" type="date" name="join_date">
+
+<input class="form-control full" type="text" name="address" placeholder="Address">
+
+</div>
+
+<button class="submit-btn" type="submit">
+Register Student
+</button>
+
+</form>
+
+<!-- Show All Students Button -->
+
+<a href="{{ url_for('student.all_students') }}" class="submit-btn show-btn">
+📋 Show All Students
+</a>
+
+</div>
+
+</div>
+
+{% endblock %}
