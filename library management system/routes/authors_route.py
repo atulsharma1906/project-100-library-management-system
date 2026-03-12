@@ -18,7 +18,8 @@ def author_register():
             auth_email=request.form.get("auth_email"),
             auth_phone=request.form.get("auth_phone"),
             auth_country=request.form.get("auth_country"),
-            auth_bio=request.form.get("auth_bio")
+            auth_bio=request.form.get("auth_bio"),
+            role="Author"
         )
 
         db.session.add(new_author)

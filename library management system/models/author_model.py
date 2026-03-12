@@ -11,3 +11,4 @@ class Author(db.Model):
 
     auth_country = db.Column(db.String(50), nullable=False)
     auth_bio = db.Column(db.String(100))
+    role=db.Column(db.String(20),nullable=False)

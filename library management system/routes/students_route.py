@@ -1,6 +1,8 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from models.student_model import Student
 from db import db
+from flask_bcrypt import Bcrypt
+bcrypt=Bcrypt()
 
 student_bp = Blueprint('student', __name__)
 
@@ -10,17 +12,33 @@ student_bp = Blueprint('student', __name__)
 def register_student():
 
     if request.method == "POST":
+        name = request.form.get("student_name")
+        age = request.form.get("age")
+        gender=request.form.get("gender")
+        course = request.form.get("course")
+        email = request.form.get("email")
+        phone = request.form.get("phone")
+        library_id=request.form.get("library_id")
+        join_date=request.form.get("join_date")
+        address = request.form.get("address")
+        password= request.form.get("stu_pass")
+        
+        hashed_password=bcrypt.generate_password_hash(password).decode("utf-8")
 
+        
         new_student = Student(
-            stu_name=request.form.get("student_name"),
-            stu_age=request.form.get("age"),
-            stu_gender=request.form.get("gender"),
-            stu_course=request.form.get("course"),
-            stu_email=request.form.get("email"),
-            stu_phone=request.form.get("phone"),
-            stu_library_id=request.form.get("library_id"),
-            stu_join_date=request.form.get("join_date"),
-            stu_address=request.form.get("address")
+            stu_name=name,
+            stu_age=age,
+            stu_gender=gender,
+            stu_course=course,
+            stu_email=email,
+            stu_phone=phone,
+            stu_library_id=library_id,
+            stu_join_date=join_date,
+            stu_address=address,
+            
+            role="student",
+            stu_pass=hashed_password
         )
 
         db.session.add(new_student)

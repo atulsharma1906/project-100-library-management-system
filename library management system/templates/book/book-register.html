@@ -1,61 +1,196 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Book Registration</title>
 
-{% block content %}
+<style>
 
-<div class="container mt-5">
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
 
-<div class="row justify-content-center">
 
-<div class="col-md-5">
+/* Background */
 
-<div class="card shadow-lg p-4">
+body{
+height:100vh;
+background:linear-gradient(135deg,#667eea,#764ba2);
+display:flex;
+justify-content:center;
+align-items:center;
+}
 
-<h3 class="text-center mb-4 text-dark">📚 Book Registration</h3>
+
+/* Header */
+
+.header{
+position:fixed;
+top:0;
+width:100%;
+background:#0d0d26;
+padding:18px 60px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+color:white;
+}
+
+.logo{
+font-size:22px;
+font-weight:bold;
+}
+
+.nav a{
+text-decoration:none;
+color:white;
+margin-left:30px;
+font-size:16px;
+}
+
+.nav a:hover{
+color:#00ffd5;
+}
+
+
+/* Card */
+
+.card{
+width:750px;
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(10px);
+border-radius:20px;
+padding:40px;
+box-shadow:0 10px 40px rgba(0,0,0,0.3);
+color:white;
+margin-top:100px;
+}
+
+
+/* Heading */
+
+.card h2{
+text-align:center;
+margin-bottom:25px;
+font-size:30px;
+}
+
+
+/* Grid */
+
+.form-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+
+/* Inputs */
+
+input,select,textarea{
+padding:12px;
+border:none;
+border-radius:8px;
+outline:none;
+font-size:15px;
+}
+
+
+/* Description full width */
+
+.description{
+grid-column:span 2;
+height:90px;
+resize:none;
+}
+
+
+/* Button */
+
+button{
+margin-top:20px;
+padding:14px;
+border:none;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+width:100%;
+background:linear-gradient(45deg,#ff6a00,#ee0979);
+color:white;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.03);
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<div class="header">
+
+<div class="logo">📚 Library System</div>
+
+<div class="nav">
+<a href="/">Home</a>
+<a href="{{ url_for('student.register_student')}}">Students</a>
+<a href="{{ url_for('book.book_register')}}">Books</a>
+<a href="{{ url_for('author.author_register')}}">Authors</a>
+</div>
+
+</div>
+
+
+<!-- FORM -->
+
+<div class="card">
+
+<h2>📚 Book Registration</h2>
 
 <form method="POST">
 
-<div class="mb-3">
-<label class="form-label text-dark">Book Title</label>
-<input type="text" class="form-control" name="title" placeholder="Enter book title">
+<div class="form-grid">
+
+<input type="text" name="book_title" placeholder="Book Title" required>
+
+<input type="text" name="author_name" placeholder="Author Name">
+
+<input type="text" name="isbn" placeholder="ISBN Number">
+
+<input type="text" name="publisher" placeholder="Publisher">
+
+<input type="number" name="year" placeholder="Publication Year">
+
+<select name="category">
+<option>Select Category</option>
+<option>Programming</option>
+<option>Science</option>
+<option>Mathematics</option>
+<option>History</option>
+<option>Literature</option>
+</select>
+
+<input type="number" name="quantity" placeholder="Number of Copies">
+
+<input type="text" name="language" placeholder="Language">
+
+<textarea name="description" placeholder="Book Description" class="description"></textarea>
+
 </div>
 
-<div class="mb-3">
-<label class="form-label text-dark">Author Name</label>
-<input type="text" class="form-control" name="author" placeholder="Enter author name">
-</div>
-
-<div class="mb-3">
-<label class="form-label text-dark">ISBN</label>
-<input type="text" class="form-control" name="isbn" placeholder="Enter ISBN number">
-</div>
-
-<div class="mb-3">
-<label class="form-label text-dark">Category</label>
-<input type="text" class="form-control" name="category" placeholder="Enter book category">
-</div>
-
-<div class="mb-3">
-<label class="form-label text-dark">Publication Year</label>
-<input type="number" class="form-control" name="year" placeholder="Enter year">
-</div>
-
-<div class="mb-3">
-<label class="form-label text-dark">Description</label>
-<textarea class="form-control" name="description" rows="3"></textarea>
-</div>
-
-<div class="d-grid">
-<button class="btn btn-warning">Add Book</button>
-</div>
+<button type="submit">Add Book</button>
 
 </form>
 
 </div>
 
-</div>
-
-</div>
-
-</div>
-
-{% endblock %}
+</body>
+</html>

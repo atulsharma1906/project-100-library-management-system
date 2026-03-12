@@ -2,30 +2,140 @@
 
 {% block content %}
 
-<h2 style="text-align:center;">Edit Student</h2>
+<style>
 
-<form method="POST" style="width:500px;margin:auto;">
+.update-container{
+    width:90%;
+    max-width:1000px;
+    margin:25px auto;
+    padding:40px;
+    background:linear-gradient(135deg,#1e3c72,#2a5298);
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(168, 72, 72, 0.67);
+}
 
-<input type="text" name="student_name" value="{{student.stu_name}}" placeholder="Name"><br><br>
+.update-title{
+    text-align:center;
+    color:#fff;
+    margin-bottom:30px;
+    font-size:28px;
+}
 
-<input type="number" name="age" value="{{student.stu_age}}" placeholder="Age"><br><br>
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
 
-<input type="text" name="gender" value="{{student.stu_gender}}" placeholder="Gender"><br><br>
+.form-group{
+    display:flex;
+    flex-direction:column;
+}
 
-<input type="text" name="course" value="{{student.stu_course}}" placeholder="Course"><br><br>
+.form-group label{
+    color:#f0f0f0;
+    margin-bottom:6px;
+    font-size:14px;
+}
 
-<input type="email" name="email" value="{{student.stu_email}}" placeholder="Email"><br><br>
+.form-group input{
+    padding:12px;
+    border:none;
+    border-radius:6px;
+    outline:none;
+    font-size:14px;
+    background:#f5f5f5;
+}
 
-<input type="text" name="phone" value="{{student.stu_phone}}" placeholder="Phone"><br><br>
+.form-group input:focus{
+    border:2px solid #1aa105a7;
+    background:white;
+}
 
-<input type="text" name="library_id" value="{{student.stu_library_id}}" placeholder="Library ID"><br><br>
+.full-width{
+    grid-column:1 / 3;
+}
 
-<input type="date" name="join_date" value="{{student.stu_join_date}}"><br><br>
+.update-btn{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:6px;
+    background:#ff9800;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:20px;
+    transition:0.3s;
+}
 
-<input type="text" name="address" value="{{student.stu_address}}" placeholder="Address"><br><br>
+.update-btn:hover{
+    background:#e68900;
+}
 
-<button type="submit">Update Student</button>
+</style>
+
+
+<div class="update-container">
+
+<h2 class="update-title">Update {{student.stu_name}} Details</h2>
+
+<form method="POST">
+
+<div class="form-grid">
+
+<div class="form-group">
+<label>Student Name</label>
+<input type="text" name="student_name" value="{{student.stu_name}}">
+</div>
+
+<div class="form-group">
+<label>Age</label>
+<input type="number" name="age" value="{{student.stu_age}}">
+</div>
+
+<div class="form-group">
+<label>Gender</label>
+<input type="text" name="gender" value="{{student.stu_gender}}">
+</div>
+
+<div class="form-group">
+<label>Course</label>
+<input type="text" name="course" value="{{student.stu_course}}">
+</div>
+
+<div class="form-group">
+<label>Email</label>
+<input type="email" name="email" value="{{student.stu_email}}">
+</div>
+
+<div class="form-group">
+<label>Phone</label>
+<input type="text" name="phone" value="{{student.stu_phone}}">
+</div>
+
+<div class="form-group">
+<label>Library ID</label>
+<input type="text" name="library_id" value="{{student.stu_library_id}}">
+</div>
+
+<div class="form-group">
+<label>Join Date</label>
+<input type="date" name="join_date" value="{{student.stu_join_date}}">
+</div>
+
+<div class="form-group full-width">
+<label>Address</label>
+<input type="text" name="address" value="{{student.stu_address}}">
+</div>
+
+</div>
+
+<button class="update-btn" type="submit">Update Student</button>
 
 </form>
+
+</div>
 
 {% endblock %}

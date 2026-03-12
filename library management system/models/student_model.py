@@ -15,5 +15,7 @@ class Student(db.Model):
 
     stu_library_id = db.Column(db.String(50), unique=True)
     stu_join_date = db.Column(db.Date)
+    stu_pass=db.Column(db.String(255),nullable=False)
 
     stu_address = db.Column(db.Text)
+    role=db.Column(db.String(20),nullable=False)

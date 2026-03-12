@@ -70,6 +70,7 @@ color:white;
 
 <div class="student-card">
 
+{% if students %}
 <h2>📚 All Students</h2>
 
 <table>
@@ -112,7 +113,8 @@ color:white;
 <button class="btn edit">Edit</button>
 </a>
 
-<a href="{{ url_for('student.delete_student', id=student.id) }}">
+<a href="{{ url_for('student.delete_student', id=student.id) }}"
+onclick="return confirm('Are you sure want to delete this student')">
 <button class="btn delete">Delete</button>
 </a>
 
@@ -122,6 +124,12 @@ color:white;
 {% endfor %}
 
 </table>
+{%else%}
+<center>
+    No Student Record Found
+</center>
+
+{% endif %}
 
 </div>
 
